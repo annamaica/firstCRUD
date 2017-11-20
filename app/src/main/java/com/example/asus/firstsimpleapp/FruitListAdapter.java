@@ -25,11 +25,6 @@ public class FruitListAdapter extends ArrayAdapter{
     public FruitListAdapter(Context context, int resource){
         super (context, resource);
     }
-    static class LayoutHandler{
-        TextView Name, Desc;
-        ImageView Image;
-    }
-
     @Override
     public void add(Object object) {
         super.add(object);
@@ -51,23 +46,18 @@ public class FruitListAdapter extends ArrayAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
-        LayoutHandler layoutHandler;
-        if(row == null){
-            LayoutInflater layoutInflater = (LayoutInflater)this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row = layoutInflater.inflate(R.layout.fruit_row_layout,parent,false);
-            layoutHandler = new LayoutHandler();
-            layoutHandler.Name =  row.findViewById(R.id.textView8);
-            layoutHandler.Desc = row.findViewById(R.id.textView9);
-            layoutHandler.Image = row.findViewById(R.id.imageView2);
-            row.setTag(layoutHandler);
-        }
-        else{
-            layoutHandler = (LayoutHandler) row.getTag();
-        }
+        LayoutInflater layoutInflater = (LayoutInflater)this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        row = layoutInflater.inflate(R.layout.fruit_row_layout,parent,false);
+        TextView Name =  row.findViewById(R.id.textView8);
+        TextView Desc = row.findViewById(R.id.textView9);
+        TextView id = row.findViewById(R.id.textView10);
+        ImageView Image = row.findViewById(R.id.imageView2);
+
         Fruits fruits = (Fruits)this.getItem(position);
-        layoutHandler.Name.setText(fruits.getName());
-        layoutHandler.Desc.setText(fruits.getDesc());
-        layoutHandler.Image.setImageBitmap(getImage(fruits.getImage()));
+        Name.setText(fruits.getName());
+        Desc.setText(fruits.getDesc());
+        id.setText(fruits.getId());
+        Image.setImageBitmap(getImage(fruits.getImage()));
         return row;
 
     }

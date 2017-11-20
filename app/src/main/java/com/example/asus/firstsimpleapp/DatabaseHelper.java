@@ -59,8 +59,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.insert("fruittable", null, contentValues);
         Log.e("TABLE OPERATIONS", "One fruit is inserted");
     }
+    public int saveFruit(String fruitId, String fruitname, byte[]image, String fruitDesc, SQLiteDatabase sqLiteDatabase){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("fruitName", fruitname);
+        contentValues.put("fruitImg", image);
+        contentValues.put("fruitDesc", fruitDesc);
+        String selection = "foodID LIKE ?";
+        String[] selection_args = {fruitId};
+        int count = sqLiteDatabase.update("fruittable",contentValues,selection,selection_args);
+        return count;
+    }
+    public void deleteFruit(String fruitID, SQLiteDatabase sqLiteDatabase){
+        String selection = "foodID LIKE ?";
+        String[] selection_args = {fruitID};
+        sqLiteDatabase.delete("fruittable",selection,selection_args);
+    }
     public Cursor loginData(String username, String password, SQLiteDatabase sqLiteDatabase){
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM usertable WHERE user_uname = '"+username+"' AND user_password = '"+password+"'", null);
+        return cursor;
+
+    }
+    public Cursor searchData(String id, SQLiteDatabase sqLiteDatabase){
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM fruittable WHERE foodID = '"+id+"'", null);
         return cursor;
 
     }

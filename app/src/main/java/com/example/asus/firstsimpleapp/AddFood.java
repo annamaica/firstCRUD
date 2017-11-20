@@ -3,6 +3,7 @@ package com.example.asus.firstsimpleapp;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -28,16 +30,64 @@ public class AddFood extends AppCompatActivity {
     Button browse, save;
     ImageView imgView;
     EditText edName, edDesc;
+    Cursor cursor;
     private static final int RESULT_IMAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_food);
+        Bundle bundle = getIntent().getExtras();
         browse = (Button) findViewById(R.id.button4);
         edName = (EditText) findViewById(R.id.editText5);
         edDesc = (EditText) findViewById(R.id.editText6);
         imgView = (ImageView) findViewById(R.id.imageView);
+        save = (Button) findViewById(R.id.button5);
+        final String fruitID;
+        if (bundle != null){
+            fruitID = bundle.getString("fruitID");
+
+        }
+        else{
+            fruitID = "Null";
+        }
+
+        if (fruitID.equals("Null")){
+            save.setText("Add Fruit");
+            save.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    addFruit();
+                }
+            });
+        }
+        else{
+            save.setText("Save Fruit");
+            dbHelper = new DatabaseHelper(getApplicationContext());
+            sqLiteDatabase = dbHelper.getReadableDatabase();
+            cursor = dbHelper.searchData(fruitID, sqLiteDatabase);
+            if(cursor.moveToFirst()) {
+                do {
+                    String name, desc;
+                    byte[] image;
+                    name = cursor.getString(1);
+                    image = cursor.getBlob(2);
+                    desc = cursor.getString(3);
+
+                    edName.setText(name);
+                    edDesc.setText(desc);
+                    imgView.setImageBitmap(getImage(image));
+                }
+                while (cursor.moveToNext());
+            }
+            save.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    saveFruit(fruitID);
+                }
+            });
+        }
+
         browse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,13 +96,7 @@ public class AddFood extends AppCompatActivity {
                         RESULT_IMAGE);
             }
         });
-        save = (Button) findViewById(R.id.button5);
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addFruit();
-            }
-        });
+
 
     }
     @Override
@@ -90,8 +134,21 @@ public class AddFood extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
         sqLiteDatabase = dbHelper.getWritableDatabase();
         dbHelper.AddFruit(namee,data,descc,sqLiteDatabase);
-        Toast.makeText(getApplicationContext(), "Fruit Information Saved", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Fruit Information Added", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(AddFood.this, FoodDashboard.class);
+        startActivity(intent);
 
+    }
+    public void saveFruit(String id){
+        String namee = edName.getText().toString();
+        String descc = edDesc.getText().toString();
+        byte [] data = getimagebyte(imgView);
+        dbHelper = new DatabaseHelper(getApplicationContext());
+        sqLiteDatabase = dbHelper.getWritableDatabase();
+        int count = dbHelper.saveFruit(id,namee,data,descc,sqLiteDatabase);
+        Toast.makeText(getApplicationContext(), "Fruit Information Saved", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(AddFood.this, FoodDashboard.class);
+        startActivity(intent);
     }
     public static byte[] getimagebyte (ImageView imageView){
         Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
@@ -99,5 +156,8 @@ public class AddFood extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
         byte [] bytearray = stream.toByteArray();
         return bytearray;
+    }
+    public static Bitmap getImage (byte[] image){
+        return BitmapFactory.decodeByteArray(image, 0, image.length);
     }
 }

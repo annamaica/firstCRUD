@@ -8,6 +8,15 @@ public class Fruits {
     String name;
     byte[] image;
     String desc;
+    String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -32,7 +41,8 @@ public class Fruits {
     public void setDesc(String desc) {
         this.desc = desc;
     }
-    public Fruits (String name, byte[]image, String desc){
+    public Fruits (String id, String name, byte[]image, String desc){
+        this.id = id;
         this.name = name;
         this.image = image;
         this.desc = desc;
