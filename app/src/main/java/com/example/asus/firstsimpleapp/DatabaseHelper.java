@@ -84,6 +84,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
 
     }
+    public Cursor duplicateemail(String email, SQLiteDatabase sqLiteDatabase){
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM usertable WHERE user_email = '"+email+"'", null);
+        return cursor;
+
+    }
     public Cursor getInformation(SQLiteDatabase sqLiteDatabase){
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM fruittable", null);
         return cursor;
