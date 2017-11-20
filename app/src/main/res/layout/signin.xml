@@ -54,7 +54,7 @@
         android:text="Sign In"
         android:layout_gravity="center"
         android:layout_width="350dp"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:textColor="#FFCF9043"
         android:textSize="15dp"
         android:padding="1dp"
