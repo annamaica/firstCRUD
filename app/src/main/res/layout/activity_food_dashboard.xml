@@ -9,17 +9,25 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.example.asus.firstsimpleapp.FoodDashboard">
+    tools:context="com.example.asus.firstsimpleapp.FoodDashboard"
+    android:background="@color/colorPrimary"
+    android:theme="@style/AppTheme">
 
     <Button
         android:text="Add Food"
-        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:id="@+id/button3"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#FFCF9043"
+        android:textSize="17dp"
+        android:background="@color/colorAccent"
+        style="@style/Widget.AppCompat.Button" />
 
     <GridView
+        android:layout_margin="15dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/fruitlist" />
