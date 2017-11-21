@@ -8,6 +8,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +31,8 @@ public class Register extends Fragment {
     TextInputEditText email;
     Cursor cursor;
     Button register;
+    String arg = "False";
+    String arg2 = "False";
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -36,6 +40,7 @@ public class Register extends Fragment {
         email = view.findViewById(R.id.editText);
         register = view.findViewById(R.id.button);
         final TextInputLayout til = view.findViewById(R.id.text_input_layout);
+        final TextInputLayout til2 = view.findViewById(R.id.text_input_layout4);
         email.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -43,14 +48,12 @@ public class Register extends Fragment {
                 if (!emaill.equals("")) {
                     boolean valid = emailValidator(emaill);
                     if(valid){
-                        register.setEnabled(true);
                         dbHelper = new DatabaseHelper(getContext());
                         sqLiteDatabase = dbHelper.getReadableDatabase();
                         cursor = dbHelper.duplicateemail(emaill, sqLiteDatabase);
                         if(cursor.moveToFirst()){
-
-                            til.setError("Email Address is already taken");
                             register.setEnabled(false);
+                            til.setError("Email Address is already taken");
                         }
                         else{
                             register.setEnabled(true);
@@ -58,7 +61,6 @@ public class Register extends Fragment {
                         }
                     }
                     else{
-                        register.setEnabled(false);
                         til.setError("Email Address is invalid");
                     }
                 }
@@ -67,6 +69,29 @@ public class Register extends Fragment {
         username = view.findViewById(R.id.editText2);
         password = view.findViewById(R.id.editText3);
         cpassword = view.findViewById(R.id.editText4);
+        cpassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                final String passwordd = password.getText().toString();
+                final String cpasswordd = cpassword.getText().toString();
+                if(!passwordd.equals(cpasswordd)){
+                    til2.setError("Password Doesn't Match");
+                }
+                else{
+                    til2.setError(null);
+                }
+            }
+        });
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,19 +99,18 @@ public class Register extends Fragment {
                 String usernamee = username.getText().toString();
                 String passwordd = password.getText().toString();
                 String cpasswordd = cpassword.getText().toString();
-                if (!passwordd.equals(cpasswordd)) {
-                    Toast.makeText(getActivity(), "Password doesn't Match", Toast.LENGTH_SHORT).show();
+                if(!passwordd.equals(cpasswordd)){
+                    til2.setError("Password Doesn't Match");
                 }
                 else{
                     dbHelper = new DatabaseHelper(getContext());
                     sqLiteDatabase = dbHelper.getWritableDatabase();
-                    dbHelper.AddUser(emaill, usernamee, cpasswordd, sqLiteDatabase);
+                    dbHelper.AddUser(emaill, usernamee, passwordd, sqLiteDatabase);
                     Toast.makeText(getActivity(), "Registration Complete", Toast.LENGTH_SHORT).show();
-                    email.setText(" ");
-                    username.setText(" ");
-                    password.setText(" ");
-                    cpassword.setText(" ");
-
+                    email.setText("");
+                    username.setText("");
+                    password.setText("");
+                    cpassword.setText("");
                 }
             }
         });
