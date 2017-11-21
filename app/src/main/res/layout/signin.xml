@@ -29,8 +29,7 @@
             android:padding="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            />
+            android:layout_margin="15dp" />
 
     </LinearLayout>
     <LinearLayout
@@ -53,11 +52,12 @@
     <Button
         android:text="Sign In"
         android:layout_gravity="center"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:textColor="#FFCF9043"
-        android:textSize="15dp"
-        android:padding="1dp"
+        android:textSize="17dp"
+        android:layout_margin="15dp"
+        android:padding="15dp"
         android:id="@+id/button2"
         android:background="@android:color/background_light" />
 

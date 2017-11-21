@@ -5,38 +5,44 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1"
-    android:layout_marginTop="50dp">
+    android:layout_marginTop="50dp"
+    android:background="@color/colorPrimary">
 
-    <ImageView
-        android:layout_width="700dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        app:srcCompat="@drawable/logo"
-        android:id="@+id/imageView4" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="30dp">
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true">
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:id="@+id/editText"
+            android:inputType="textEmailAddress"
+            android:hint="Email Address"
+            android:background="@drawable/rounded_corner"
+            android:padding="15dp"
+            android:layout_gravity="center"/>
+    </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/text_input_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:errorEnabled="true">
-            <android.support.design.widget.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText"
-                android:inputType="textEmailAddress"
-                android:hint="Email Address"/>
-        </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
         android:id="@+id/text_input_layout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:errorEnabled="true">
         <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
             android:id="@+id/editText2"
             android:inputType="textPersonName"
-            android:hint="Username"/>
+            android:hint="Username"
+            android:background="@drawable/rounded_corner"
+            android:padding="15dp"
+            android:layout_gravity="center"/>
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
         android:id="@+id/text_input_layout3"
@@ -44,11 +50,14 @@
         android:layout_height="wrap_content"
         app:errorEnabled="true">
         <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
             android:id="@+id/editText3"
             android:inputType="textPassword"
-            android:hint="Password"/>
+            android:hint="Password"
+            android:background="@drawable/rounded_corner"
+            android:padding="15dp"
+            android:layout_gravity="center"/>
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
         android:id="@+id/text_input_layout4"
@@ -56,24 +65,37 @@
         android:layout_height="wrap_content"
         app:errorEnabled="true">
         <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
             android:id="@+id/editText4"
-            android:inputType="textEmailAddress"
-            android:hint="Confirm Password"/>
+            android:inputType="textPassword"
+            android:hint="Confirm Password"
+            android:background="@drawable/rounded_corner"
+            android:padding="15dp"
+            android:layout_gravity="center"/>
     </android.support.design.widget.TextInputLayout>
+
     <Button
-        android:text="Register here"
-        android:layout_width="match_parent"
+        android:text="Register"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:id="@+id/button"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:textColor="#FFCF9043"
+        android:textSize="17dp"
+        android:layout_marginLeft="20dp"
+        android:background="@android:color/background_light"/>
 
     <Button
         android:text="Clear"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:id="@+id/button8" />
-
+        android:id="@+id/button8"
+        android:textColor="#FFCF9043"
+        android:textSize="17dp"
+        android:background="@android:color/background_light"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="-50dp"/>
+    </LinearLayout>
 
 </LinearLayout>
