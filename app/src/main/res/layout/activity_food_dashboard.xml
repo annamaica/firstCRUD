@@ -4,32 +4,29 @@
     android:id="@+id/activity_food_dashboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
-    tools:context="com.example.asus.firstsimpleapp.FoodDashboard"
-    android:background="@color/colorPrimary"
-    android:theme="@style/AppTheme">
+    android:theme="@style/AppTheme"
+    tools:context="com.example.asus.firstsimpleapp.FoodDashboard">
 
     <Button
-        android:text="Add Food"
-        android:layout_gravity="center"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
         android:id="@+id/button3"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="Add Item"
         android:textColor="#FFCF9043"
-        android:textSize="17dp"
-        android:background="@color/colorAccent"
-        style="@style/Widget.AppCompat.Button" />
+        android:textSize="17dp" />
 
     <GridView
-        android:layout_margin="15dp"
+        android:id="@+id/fruitlist"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fruitlist" />
+        android:layout_height="match_parent" />
+
 
 </LinearLayout>

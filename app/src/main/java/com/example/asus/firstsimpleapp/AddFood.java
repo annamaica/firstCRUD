@@ -53,7 +53,7 @@ public class AddFood extends AppCompatActivity {
         }
 
         if (fruitID.equals("Null")){
-            save.setText("Add Fruit");
+            save.setText("Add Food");
             save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -62,7 +62,7 @@ public class AddFood extends AppCompatActivity {
             });
         }
         else{
-            save.setText("Save Fruit");
+            save.setText("Save Food");
             dbHelper = new DatabaseHelper(getApplicationContext());
             sqLiteDatabase = dbHelper.getReadableDatabase();
             cursor = dbHelper.searchData(fruitID, sqLiteDatabase);

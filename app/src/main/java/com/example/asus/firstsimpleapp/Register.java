@@ -28,7 +28,7 @@ public class Register extends Fragment {
     DatabaseHelper dbHelper;
     SQLiteDatabase sqLiteDatabase;
     EditText username, password, cpassword;
-    TextInputEditText email;
+    EditText email;
     Cursor cursor;
     Button register;
     String arg = "False";
@@ -39,8 +39,6 @@ public class Register extends Fragment {
         View view = inflater.inflate(R.layout.register, container, false);
         email = view.findViewById(R.id.editText);
         register = view.findViewById(R.id.button);
-        final TextInputLayout til = view.findViewById(R.id.text_input_layout);
-        final TextInputLayout til2 = view.findViewById(R.id.text_input_layout4);
         email.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -53,15 +51,12 @@ public class Register extends Fragment {
                         cursor = dbHelper.duplicateemail(emaill, sqLiteDatabase);
                         if(cursor.moveToFirst()){
                             register.setEnabled(false);
-                            til.setError("Email Address is already taken");
                         }
                         else{
                             register.setEnabled(true);
-                            til.setError(null);
                         }
                     }
                     else{
-                        til.setError("Email Address is invalid");
                     }
                 }
             }
@@ -85,10 +80,10 @@ public class Register extends Fragment {
                 final String passwordd = password.getText().toString();
                 final String cpasswordd = cpassword.getText().toString();
                 if(!passwordd.equals(cpasswordd)){
-                    til2.setError("Password Doesn't Match");
+
                 }
                 else{
-                    til2.setError(null);
+
                 }
             }
         });
@@ -100,7 +95,7 @@ public class Register extends Fragment {
                 String passwordd = password.getText().toString();
                 String cpasswordd = cpassword.getText().toString();
                 if(!passwordd.equals(cpasswordd)){
-                    til2.setError("Password Doesn't Match");
+
                 }
                 else{
                     dbHelper = new DatabaseHelper(getContext());

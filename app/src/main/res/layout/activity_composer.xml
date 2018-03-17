@@ -12,7 +12,6 @@
     android:orientation="vertical"
     tools:context="com.example.asus.firstsimpleapp.Composer"
     android:weightSum="1"
-    android:background="@color/colorPrimary"
     android:theme="@style/AppTheme">
 
     <ImageView
@@ -36,36 +35,51 @@
         android:layout_weight="0.01" />
 
     <TextView
-        android:text="TextView"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Description here"
+
         android:textSize="13dp"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView111" />
+    <TextView
+        android:text="TextView"
+
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView12" />
 
-    <Button
-        android:text="Edit"
-        android:textColor="#FFCF9043"
-        android:textSize="17dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:padding="15dp"
-        android:background="@android:color/background_light"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button6" />
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:text="Edit"
+            android:textColor="#FFCF9043"
+            android:textSize="17dp"
+            android:background="@android:color/background_light"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button6" />
 
-    <Button
-        android:text="Delete"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:textColor="#FFCF9043"
-        android:textSize="17dp"
-        android:layout_marginTop="15dp"
-        android:padding="15dp"
-        android:background="@android:color/background_light"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button7" />
+        <Button
+            android:text="Delete"
+            android:layout_marginLeft="10dp"
+            android:textColor="#FFCF9043"
+            android:textSize="17dp"
+            android:background="@android:color/background_light"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button7" />
+    </LinearLayout>
+
 </LinearLayout>

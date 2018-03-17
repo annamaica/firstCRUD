@@ -11,7 +11,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     tools:context="com.example.asus.firstsimpleapp.AddFood"
-    android:background="@color/colorPrimary"
     android:weightSum="1">
 
     <TextView
@@ -24,12 +23,9 @@
 
     <EditText
         android:ems="10"
-        android:background="@drawable/rounded_corner"
-        android:padding="15dp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
         android:inputType="textPersonName"
         android:id="@+id/editText5"/>
 
@@ -41,50 +37,64 @@
         android:textStyle="bold"
         android:textSize="15dp"/>
 
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:id="@+id/imageView"
-        android:layout_weight="0.85"
-        android:layout_gravity="center"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:srcCompat="@mipmap/ic_launcher"
+            android:id="@+id/imageView"
+            android:layout_weight="0.85"
+            android:layout_gravity="center"/>
 
-    <Button
-        android:text="Browse"
-        android:layout_gravity="center"
+        <Button
+            android:text="Browse"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button4"
+            android:layout_margin="15dp"
+            android:padding="15dp"
+            android:textColor="#FFCF9043"
+            android:background="@android:color/background_light"/>
+    </LinearLayout>
+
+    <TextView
+        android:text="Food Description:"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button4"
-        android:layout_margin="15dp"
-        android:padding="15dp"
-        android:textColor="#FFCF9043"
-        android:background="@android:color/background_light"/>
-
+        android:id="@+id/textView111"
+        android:textStyle="bold"
+        android:textSize="15dp"/>
     <EditText
-        android:hint="Enter Description Here"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_gravity="center"
-        android:layout_height="50dp"
+        android:layout_height="160dp"
         android:id="@+id/editText6" />
 
-    <Button
-        android:text="Save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button5"
-        android:layout_margin="15dp"
-        android:padding="15dp"
-        android:textColor="#FFCF9043"
-        android:background="@android:color/background_light"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:text="Clear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button9"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:padding="15dp"
-        android:textColor="#FFCF9043"
-        android:background="@android:color/background_light"/>
+        <Button
+            android:text="Save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button5"
+            android:textColor="#FFCF9043"
+            android:background="@android:color/background_light"/>
+
+        <Button
+            android:layout_marginLeft="20dp"
+            android:text="Clear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button9"
+            android:textColor="#FFCF9043"
+            android:background="@android:color/background_light"/>
+    </LinearLayout>
+
 </LinearLayout>
