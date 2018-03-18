@@ -147,9 +147,9 @@ public class MainActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Sign In";
+                    return "Login";
                 case 1:
-                    return "Register";
+                    return "Signup";
             }
             return null;
         }

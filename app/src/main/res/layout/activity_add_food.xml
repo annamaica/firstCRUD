@@ -14,7 +14,7 @@
     android:weightSum="1">
 
     <TextView
-        android:text="Food Name:"
+        android:text="Memo Title:"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
@@ -30,6 +30,7 @@
         android:id="@+id/editText5"/>
 
     <TextView
+        android:visibility="gone"
         android:text="Food Image:"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,6 +39,7 @@
         android:textSize="15dp"/>
 
     <LinearLayout
+        android:visibility="gone"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -50,6 +52,7 @@
             android:layout_gravity="center"/>
 
         <Button
+            android:visibility="gone"
             android:text="Browse"
             android:layout_gravity="center"
             android:layout_width="match_parent"
@@ -62,7 +65,7 @@
     </LinearLayout>
 
     <TextView
-        android:text="Food Description:"
+        android:text="Memo Description:"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView111"
@@ -80,21 +83,25 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:text="Save"
+            android:id="@+id/button5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button5"
-            android:textColor="#FFCF9043"
-            android:background="@android:color/background_light"/>
+            android:background="@color/colorAccent"
+            android:padding="15dp"
+            android:text="Add Memo"
+            android:textColor="@android:color/background_light"
+            android:textSize="12dp" />
 
         <Button
-            android:layout_marginLeft="20dp"
-            android:text="Clear"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/button9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button9"
-            android:textColor="#FFCF9043"
-            android:background="@android:color/background_light"/>
+            android:background="@color/colorAccent"
+            android:padding="15dp"
+            android:text="Clear All"
+            android:textColor="@android:color/background_light"
+            android:textSize="12dp" />
     </LinearLayout>
 
 </LinearLayout>

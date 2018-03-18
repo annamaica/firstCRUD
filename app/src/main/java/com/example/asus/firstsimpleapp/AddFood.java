@@ -23,26 +23,27 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class AddFood extends AppCompatActivity {
 
     DatabaseHelper dbHelper;
     SQLiteDatabase sqLiteDatabase;
-    Button browse, save;
-    ImageView imgView;
-    EditText edName, edDesc;
     Cursor cursor;
+    @BindView(R.id.button4) Button browse;
+    @BindView(R.id.button5) Button save;
+    @BindView(R.id.imageView) ImageView imgView;
+    @BindView(R.id.editText5) EditText edName;
+    @BindView(R.id.editText6) EditText edDesc;
     private static final int RESULT_IMAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_food);
+        ButterKnife.bind(this);
         Bundle bundle = getIntent().getExtras();
-        browse = (Button) findViewById(R.id.button4);
-        edName = (EditText) findViewById(R.id.editText5);
-        edDesc = (EditText) findViewById(R.id.editText6);
-        imgView = (ImageView) findViewById(R.id.imageView);
-        save = (Button) findViewById(R.id.button5);
         final String fruitID;
         if (bundle != null){
             fruitID = bundle.getString("fruitID");
@@ -53,7 +54,7 @@ public class AddFood extends AppCompatActivity {
         }
 
         if (fruitID.equals("Null")){
-            save.setText("Add Food");
+            save.setText("Add Memo");
             save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -62,7 +63,7 @@ public class AddFood extends AppCompatActivity {
             });
         }
         else{
-            save.setText("Save Food");
+            save.setText("Save Memo");
             dbHelper = new DatabaseHelper(getApplicationContext());
             sqLiteDatabase = dbHelper.getReadableDatabase();
             cursor = dbHelper.searchData(fruitID, sqLiteDatabase);
@@ -134,7 +135,7 @@ public class AddFood extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
         sqLiteDatabase = dbHelper.getWritableDatabase();
         dbHelper.AddFruit(namee,data,descc,sqLiteDatabase);
-        Toast.makeText(getApplicationContext(), "Fruit Information Added", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Memo Information Added", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(AddFood.this, FoodDashboard.class);
         startActivity(intent);
 
@@ -146,7 +147,7 @@ public class AddFood extends AppCompatActivity {
         dbHelper = new DatabaseHelper(getApplicationContext());
         sqLiteDatabase = dbHelper.getWritableDatabase();
         int count = dbHelper.saveFruit(id,namee,data,descc,sqLiteDatabase);
-        Toast.makeText(getApplicationContext(), "Fruit Information Saved", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Memo Information Saved", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(AddFood.this, FoodDashboard.class);
         startActivity(intent);
     }

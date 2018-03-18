@@ -2,11 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_margin="15dp"
+    android:layout_margin="25dp"
     android:layout_height="wrap_content"
     android:weightSum="1">
 
     <ImageView
+        android:visibility="gone"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="-10dp"
@@ -14,16 +15,13 @@
         android:id="@+id/imageView2"
         android:layout_weight="0.14" />
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
         <TextView
+            android:layout_marginTop="20dp"
             android:id="@+id/textView11"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Name: "
+            android:text="Memo Title: "
             android:textColor="@android:color/background_dark" />
 
         <TextView
@@ -32,20 +30,15 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textColor="@android:color/black"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:textSize="12dp" />
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
         <TextView
+            android:layout_marginTop="10dp"
             android:id="@+id/textView111"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Description: "
+            android:text="Memo Note: "
             android:textColor="@android:color/black" />
 
         <TextView
@@ -54,9 +47,7 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textColor="@android:color/black"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:textSize="12dp" />
 
     <TextView
         android:text="TextView"

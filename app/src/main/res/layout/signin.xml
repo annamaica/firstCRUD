@@ -3,21 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="50dp"
     android:background="@android:color/background_light"
     android:orientation="vertical">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/memo" />
 
-    <TextView
-        android:layout_marginLeft="12dp"
-        android:text="Username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
+        <TextView
+            android:layout_marginLeft="12dp"
+            android:text="Email"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/editText2"
@@ -26,20 +29,22 @@
             android:layout_margin="15dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:padding="15dp" />
+            android:padding="8dp" />
 
     </LinearLayout>
 
-    <TextView
-        android:layout_marginLeft="12dp"
-        android:text="Password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
+        <TextView
+            android:layout_marginLeft="12dp"
+            android:text="Password"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/editText3"
@@ -48,19 +53,26 @@
             android:layout_margin="15dp"
             android:ems="10"
             android:inputType="textPassword"
-            android:padding="15dp" />
+            android:padding="8dp" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button2"
+    <LinearLayout
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="15dp"
-        android:background="@android:color/background_light"
-        android:padding="15dp"
-        android:text="Login Now"
-        android:textColor="#FFCF9043"
-        android:textSize="17dp" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:padding="15dp"
+            android:text="Login Now"
+            android:textColor="@android:color/background_light"
+            android:textSize="12dp" />
+
+    </LinearLayout>
+
 
 </LinearLayout>

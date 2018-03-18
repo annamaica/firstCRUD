@@ -75,7 +75,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.delete("fruittable",selection,selection_args);
     }
     public Cursor loginData(String username, String password, SQLiteDatabase sqLiteDatabase){
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM usertable WHERE user_uname = '"+username+"' AND user_password = '"+password+"'", null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM usertable WHERE user_email = '"+username+"' AND user_password = '"+password+"'", null);
         return cursor;
 
     }
